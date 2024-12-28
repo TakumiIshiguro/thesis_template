@@ -38,17 +38,15 @@
 トポロジカルマップは，特徴的な通路のノード（青）とそれを繋ぐエッジ（緑）で構成され，ノードにはIDや通路の特徴，接続エッジと方向のデータが含まれている．
 シナリオは目的地までの経路を「条件」と「行動」で表現し，例として「三叉路まで直進．右折．突き当たりまで直進．停止」となる．
 
-シナリオの目標方向への変換では，句点ごとに分解し，「条件」と「行動」を抽出して以下の項目に分類する：
+シナリオの目標方向への変換では，句点ごとに分解し，「条件」と「行動」を抽出して以下の項目に分類する．
+\begin{enumerate}
+  \item [1）] 通路の特徴 （例：「三叉路」「角」）
+  \item [2）] 順番 （例：「3 つ目の」「2 番目の」） 
+  \item [3）] 方向 （例：「左手に」「右手に」）
+  \item [4）] 行動 （例：「右折」「停止」）
+\end{enumerate}
 
-通路の特徴（例:「三叉路」「角」）
-
-順番（例:「3つ目の」「2番目の」）
-
-方向（例:「左手に」「右手に」）
-
-行動（例:「右折」「停止」）
-
-例では，「三叉路まで直進」は通路の特徴「三叉路」と行動「直進」に分解される．
+\figref{fig:scenario}に示す例で，「三叉路まで直進」は通路の特徴「三叉路」と行動「直進」に分解される．
 この処理を経路全体に対して行い，得られた「行動」を分岐路での目標方向として変換し，経路追従モジュールに渡す．
 また，条件の判定には通路分類モジュールを使用する．
 
@@ -65,16 +63,29 @@
 ここで目標方向とは，目標とする進行方向（「直進」や「右折」）を表す．
 学習時は，カメラ画像とルールベース制御器が出力するヨー方向の角速度，目標方向を 0.2 秒周期でデータセットに加える．
 データセットから抽出するバッチサイズや，カメラ画像の解像度は岡田ら手法と同様である．
-データセットの収集には藤原らが提案した，データセットに加えるデータの不均衡を改善する手法，学習時に積極的な蛇行する手法を採用する．
+データセットの収集には藤原ら\cite{fujiwara2023}が提案した，\figref{fig:oversample}に示す，データセットに加えるデータの不均衡を改善する手法，\figref{fig:behavior}に示す，学習時に積極的な蛇行する手法を採用する．
 
 \begin{figure}[htbp]
   \centering
-   \includegraphics[width=110mm]{images/pdf/haruyama/pathfollow_sys.pdf}
-   \caption{Path-following module system Quoted from \cite{haruyama2023}}
-   \label{fig:pathfollow}
+  \includegraphics[width=100mm]{images/pdf/haruyama/pathfollow_sys.pdf}
+  \caption{Path-following module system (Quoted from \cite{haruyama2023})}
+  \label{fig:pathfollow}
 \end{figure}
 
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=100mm]{images/pdf/haruyama/oversample.pdf}
+  \caption{Number of data in the target direction per 10000 steps in the previous 
+  experiment(Quoted from \cite{fujiwara2023})}
+  \label{fig:oversample}
+\end{figure}
 
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=100mm]{images/pdf/haruyama/behavior.pdf}
+  \caption{Aggressive meandering(Quoted from \cite{fujiwara2023})}
+  \label{fig:behavior}
+\end{figure}
 
 \subsubsection{通路分類モジュール}
 このモジュールでは,ニューラルネットワークを用いることで，カメラ画像を入力として，通路の特徴を分類する.
