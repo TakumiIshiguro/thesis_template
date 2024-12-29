@@ -9,11 +9,11 @@
    \label{fig:sys}
 \end{figure}
 
-1)シナリオを分解し,「条件」と「行動」を抽出するモジュール(以後,シナリオモジュールと呼ぶ)
-
-2)カメラ画像と目標方向を与えることで,経路を追従するモジュール(以後,経路追従モジュールと呼ぶ)
-
-3)カメラ画像から通路の特徴を分類するモジュール(以後,通路分類モジュールと呼ぶ)
+\begin{enumerate}
+  \item [1)]シナリオを分解し,「条件」と「行動」を抽出するモジュール(以後,シナリオモジュールと呼ぶ)
+  \item [2)]カメラ画像と目標方向を与えることで,経路を追従するモジュール(以後,経路追従モジュールと呼ぶ)
+  \item [3)]カメラ画像から通路の特徴を分類するモジュール(以後,通路分類モジュールと呼ぶ)
+\end{enumerate}
 
 の３つのモジュールで構成される．ロボットは下記の a から d の一連の流れにより,指示された経路に沿って目的地まで自律移動する.
 \begin{enumerate}
@@ -53,7 +53,7 @@
 \begin{figure}[htbp]
   \centering
    \includegraphics[width=130mm]{images/pdf/haruyama/scenario.pdf}
-   \caption{ Example of topological map and created scenario Quoted from \cite{haruyama2023}}
+   \caption{ Example of topological map and created scenario (Quoted from \cite{haruyama2023})}
    \label{fig:scenario}
 \end{figure}
 
@@ -63,7 +63,7 @@
 ここで目標方向とは，目標とする進行方向（「直進」や「右折」）を表す．
 学習時は，カメラ画像とルールベース制御器が出力するヨー方向の角速度，目標方向を 0.2 秒周期でデータセットに加える．
 データセットから抽出するバッチサイズや，カメラ画像の解像度は岡田ら手法と同様である．
-データセットの収集には藤原ら\cite{fujiwara2023}が提案した，\figref{fig:oversample}に示す，データセットに加えるデータの不均衡を改善する手法，\figref{fig:behavior}に示す，学習時に積極的な蛇行する手法を採用する．
+データセットの収集には藤原ら\cite{fujiwara2023}が提案した，\figref{fig:oversample}に示す，目標方向が「左折」，「右折」のデータを７倍にする手法，\figref{fig:behavior}に示す，学習時に積極的な蛇行する手法を採用する．
 
 \begin{figure}[htbp]
   \centering
@@ -104,3 +104,53 @@
 \subsubsection{実ロボットを用いた実験}
 実ロボットを用いた実験により，ロボットを目的地まで到達可能か検証されている．
 実験では島田ら用いた 50 例のシナリオの中から，７例が用いられており，そのすべてでロボットが目的地へ到達できることが確認されている．
+\figref{fig:scenario_exp}に走行可能なシナリオを示す．
+
+\begin{figure*}[htbp]
+  \begin{tabular}{ccc}
+      \begin{minipage}[t]{0.5\textwidth}
+          \centering
+          \includegraphics[keepaspectratio, width=57mm]{images/pdf/haruyama/scenario/scenario01.pdf}
+          \subcaption{Scenario 01}
+          \label{composite}
+      \end{minipage} &
+      \begin{minipage}[t]{0.5\textwidth}
+          \centering
+          \includegraphics[keepaspectratio, width=57mm]{images/pdf/haruyama/scenario/scenario02.pdf}
+          \subcaption{Scenario 02}
+          \label{Gradation}
+      \end{minipage} \\
+      \begin{minipage}[t]{0.5\textwidth}
+          \centering
+          \includegraphics[keepaspectratio, width=57mm]{images/pdf/haruyama/scenario/scenario03.pdf}
+          \subcaption{Scenario 03}
+          \label{fill}
+      \end{minipage} &
+      \begin{minipage}[t]{0.5\textwidth}
+          \centering
+          \includegraphics[keepaspectratio, width=57mm]{images/pdf/haruyama/scenario/scenario04.pdf}
+          \subcaption{Scenario 04}
+          \label{transform}
+      \end{minipage} \\
+      \begin{minipage}[t]{0.5\textwidth}
+          \centering
+          \includegraphics[keepaspectratio, width=57mm]{images/pdf/haruyama/scenario/scenario05.pdf}
+          \subcaption{Scenario 05}
+          \label{image1}
+      \end{minipage} &
+      \begin{minipage}[t]{0.5\textwidth}
+          \centering
+          \includegraphics[keepaspectratio, width=57mm]{images/pdf/haruyama/scenario/scenario06.pdf}
+          \subcaption{Scenario 06}
+          \label{fig:scenario24}
+      \end{minipage}\\
+      \begin{minipage}[t]{0.5\textwidth}
+          \centering
+          \includegraphics[keepaspectratio, width=57mm]{images/pdf/haruyama/scenario/scenario07.pdf}
+          \subcaption{Scenario 07}
+          \label{imagess}
+      \end{minipage}
+  \end{tabular}
+  \caption{Scenarios used in the experiment (Quoted from \cite{haruyama2023})}
+  \label{fig:scenario_exp}
+\end{figure*}

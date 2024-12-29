@@ -16,6 +16,7 @@
 収集には3台のカメラを使用することで，データの多様性を高めるとともに過学習を防ぐ効果を狙っている．
 また，左右のカメラ画像に対するヨー方向の角速度には経路復帰を補助するためのオフセット（\(\pm 0.2\)rad/s）を加える．
 
+\newpage
 \figref{fig:okada_net}に岡田らの従来手法における学習器のネットワーク構造を示す．
 % 学習器は入力をRGB画像データ，出力をロボットのヨー方向の角速度としている．
 ネットワークは，入力層 1，畳み込み層 3，全結合層 2，出力層 1 の全7層で構成される．
@@ -29,11 +30,11 @@
 \end{figure}
 
 学習器の訓練後は，中央のカメラから得たRGB画像を入力とし，出力されるヨー方向の角速度を用いて経路を追従する．
-この手法は実ロボットを用いて有効性が調査されており，\figref{fig:cource}に示す学習した経路を，画像のみを入力とした学習器の出力で自律移動できることが確認されている．
-
-\begin{figure}[htbp]
-  \centering
-   \includegraphics[width=80mm]{images/pdf/okada/cource.pdf}
-   \caption{Target path used in the experiment（Quoted from \cite{okada2020}）}
-   \label{fig:cource}
-\end{figure}
+% この手法は実ロボットを用いて有効性が調査されており，\figref{fig:cource}に示す学習した経路を，画像のみを入力とした学習器の出力で自律移動できることが確認されている．
+この手法は実ロボットを用いて有効性が調査されており，学習した経路を画像のみを入力とした学習器の出力で自律移動できることが確認されている．
+% \begin{figure}[htbp]
+%   \centering
+%    \includegraphics[width=80mm]{images/pdf/okada/cource.pdf}
+%    \caption{Target path used in the experiment（Quoted from \cite{okada2020}）}
+%    \label{fig:cource}
+% \end{figure}
