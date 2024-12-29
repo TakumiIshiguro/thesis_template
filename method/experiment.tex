@@ -1,0 +1,56 @@
+\section{シミュレータを用いた実験}
+はじめに新たに作成したネットワークで経路を正しく選択できるかシミュレータを用いた実験により調査する．
+次にオフライン学習を追加で行い，効果を検証する．
+
+\subsubsection{実験装置}
+シミュレータに Gazebo\cite{gazebo}を使用する．
+ロボットには TurtleBot3 Waffle Pi\cite{turtlebot3}に３つのカメラを追加したモデルを用いる．
+
+\subsubsection{実験環境}
+実験環境として\figref{fig:haruyama_cit3f}に示す，千葉工業大学２号館３階を模した環境を使用する．
+経路の選択を行う場所として\figref{fig:haruyama_cit3f}の A, Bの分岐路を対象に行う．
+
+\begin{figure}
+  \centering
+  \includegraphics[width=130mm]{images/pdf/haruyama/cit3f.pdf}
+  \caption{Experimental environment(Quoted from \cite{haruyama2022})}
+  \label{fig:haruyama_cit3f}
+\end{figure}
+ 
+\newpage
+\subsubsection{実験方法}
+\figref{fig:fujiwara_route}に示す経路を， a から f の順番で走行しながら，模倣学習を行う．
+データセットの収集には，藤原ら\cite{fujiwara2023}が提案している，学習データの不均衡を改善する手法，学習時の積極的な蛇行を行う手法を採用する．
+テスト時は，学習器の出力で壁に衝突することなく,分岐路の先の経由点に到達することができれば,成功とする.
+オフライン学習に使用するデータセットは，a から f の順番で走行しながらオンライン学習を行った際に作成されるものを使用する．
+バッチサイズはオンライン学習と同様の 8 でデータセットからランダムにデータを抽出し，epoch数は 10 とする．
+実験では,学習とテストを繰り返し 10 回行う.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=130mm]{images/pdf/fujiwara/route.pdf}
+  \caption{Route for experiment(Quoted from \cite{fujiwara2023})}
+  \label{fig:fujiwara_route}
+\end{figure}
+
+\clearpage
+\subsubsection{実験結果}
+\ref{tab:result}に結果を示す．
+表では，春山らが使用していたネットワークを Previous method としている．
+そして新たなネットワークを使用した実験を Branched とした．
+
+\begin{table}[]
+  \centering
+  \caption{Success rate}
+  \begin{tabular}{lll}
+  \hline
+  Experiment         & Step + Epoch & Total result     \\ \hline
+  Previous method    & 10000        & 109/120 (90.8\%) \\
+                     & 20000        & 114/120 (95.0\%) \\ \hline
+  Branched           & 10000        & 113/120 (94.2\%) \\ 
+                     & 20000        & 115/120 (95.8\%) \\ \hline
+  Branched +         & 10000 + 10   &                  \\ 
+  Offline learning   &              &                  \\ \hline
+  \end{tabular}
+  \label{tab:result}
+\end{table}
