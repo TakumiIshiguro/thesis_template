@@ -25,29 +25,48 @@
 選定するにあたって，以下の条件を設定した．
 
 \begin{enumerate}
-  \item [1)] ロボットが移動に安全性が確保できない，\figref{fig:cit3f}上部に示す部分を走行ルートに含まれないこと．
-  \item [2)] 経路追従モジュールができない，「後ろを向く」などのその場での旋回が含まれていないこと．
-  \item [3)] 正面の単眼カメラの情報のみでは，通路の分類が困難な\figref{fig:cit3f}下部に示す部分が走行ルートが含まれないこと．
+  \item [1)] ロボットの移動に安全性が確保できない，\figref{fig:keepout}上部に示す部分を走行ルートに含まれないこと．
+  \item [2)] 経路追従モジュールができない，「後ろを向く」などその場での旋回が含まれていないこと．
+  \item [3)] 正面の単眼カメラの情報のみでは，通路の分類が困難な\figref{fig:keepout}下部に示す部分が走行ルートが含まれないこと．
 \end{enumerate}
 
-\begin{figure}[htbp]
+\begin{figure}
   \centering
-  \includegraphics[width=130mm]{images/pdf/ishiguro/cit3f.pdf}
+  \includegraphics[width=130mm]{images/pdf/ishiguro/keepout.pdf}
   \caption{Experimenta}
-  \label{fig:cit3f}
+  \label{fig:keepout}
 \end{figure}
 
 \subsection{経路追従モジュールの訓練}
 \figref{fig:route}に示すルートをオンライン学習させながら1週走行する．
 データセットの収集には藤原ら\cite{fujiwara2023}が提案する手法を用いる．
 また，オンライン学習で作成したモデルに追加でオフライン学習を行う．
-オフライン学習時のデータセットはオンライン学習の際に作成した1週分のデータを用いる．
+オフライン学習時のデータセットにはオンライン学習の際に作成したルート1週分のデータを用いる．
 データセットからはオンライン学習と同様のバッチサイズ８でデータをランダムに取得し，epoch数は20とした．
 
 \subsection{通路分類モジュールの訓練}
 \figref{fig:route}に示すルートをROS の navigation パッケージを使用して，経路を1周する．
 その際，3つのカメラからそれぞれ画像データを収集しながら走行する．
-学習時のパラメータとして，バッチサイズ３２，epoch数３０とし，コストアプローチに用いた重みは～～～に示す．
+学習時のパラメータとして，バッチサイズ３２，epoch数３０とし，コストアプローチに用いた重みは\ref{tab:cost}に示す．
+
+\begin{table}[htbp]
+  \centering
+  \caption{The weights assigned to each class in the experiment}\label{tab:cost}
+  \begin{tabular}{c|c}
+  \hline
+  Class & Class weights         \\
+  \hline
+  直進   & 1\\
+  突き当たり   & 39.5\\
+  角（右） & 14\\
+  角（左）& 14.2 \\
+  十字路 & 1  \\
+  三叉路（右）& 6.6  \\
+  三叉路（中央）& 7.0  \\
+  三叉路（左） & 6.4  \\
+  \hline
+  \end{tabular}
+\end{table}
 
 \subsection{シナリオに基づくナビゲーション}
 2 つのモジュールを訓練後,ロボットが目的地まで到達できるか確認する.
