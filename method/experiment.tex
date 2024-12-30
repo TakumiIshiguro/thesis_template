@@ -46,14 +46,18 @@
 \ref{tab:result}に結果を示す．
 表では，春山らが使用していたネットワークを Previous method としている．
 そして新たなネットワークを使用した実験を Branched とした．
+
 新たに作成したネットワークでも，経路を正しく選択することが確認できた．
-step数が 10000 の場合，先行研究の手法と比較すると成功率が上昇した．
-しかしstep数が 20000 の場合は先行研究と成功率に大きな差は生まれなかった．
-オフライン学習を含めた手法では，成功率が１番高くなった．
-これはルートの後半部分での失敗が減少したことが理由として考えられる．
-% 具体的には\figre{fujiwara_route}の Route f の f6 から f7 にかけての経路選択の成功率が\ref{}に示すようになった．
-これらの結果から， 新たに作成したネットワークでは 従来 20000 step 必要としていた学習 step を 10000 step まで減らすことができた．
-また，オフライン学習を行うことで，オンライン学習での欠点である，
+step数が 10000 の場合は，先行研究の手法と比較すると成功率が上昇した．
+しかしstep数が 20000 の場合は先行研究と成功率に大きな差は生じなかった．
+
+オフライン学習を併用した場合では，成功率が 20000 step と同等になった．
+また，オンライン学習の弱点であったルートの後半部分での失敗を減少させることができた．
+具体的には Branched 10000 step の実験で一番失敗の多い箇所であった，\figref{fig:fujiwara_route}の Route f の f6 から f7 にかけての経路選択の成功率が向上した．
+\ref{tab:f_result}に，f6 から f7 にかけての成功率を示す．
+
+これらの結果から，従来 20000 step 必要としていた学習 step を 10000 step まで減らすことができた．
+また，ネットワークの変更やオフライン学習は経路選択の可能性を向上させるには有効であると考えられる．
 
 \begin{table}[]
   \centering
@@ -65,8 +69,22 @@ step数が 10000 の場合，先行研究の手法と比較すると成功率が
                      & 20000        & 114/120 (95.0\%) \\ \hline
   Branched           & 10000        & 113/120 (94.2\%) \\ 
                      & 20000        & 115/120 (95.8\%) \\ \hline
-  Branched +         & 10000 + 10   &                  \\ 
+  Branched +         & 10000 + 10   & 115/120 (95.8\%) \\ 
   Offline learning   &              &                  \\ \hline
   \end{tabular}
   \label{tab:result}
+\end{table}
+
+\begin{table}[]
+  \centering
+  \caption{Success rate at f6 to f7}
+  \begin{tabular}{lll}
+  \hline
+  Experiment         & Step + Epoch & Total result \\ \hline
+  Branched           & 10000        & 5/10         \\ 
+                     & 20000        & 7/10         \\ \hline
+  Branched +         & 10000 + 10   & 8/10         \\ 
+  Offline learning   &              &              \\ \hline
+  \end{tabular}
+  \label{tab:f_result}
 \end{table}
