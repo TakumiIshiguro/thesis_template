@@ -1,5 +1,5 @@
 \section{シミュレータを用いた実験}
-はじめに新たに作成したネットワークで経路を正しく選択できるかシミュレータを用いた実験により調査する．
+まずは，新たに作成したネットワークで経路を正しく選択できるかシミュレータを用いた実験により調査する．
 次にオフライン学習を追加で行い，効果を検証する．
 
 \subsubsection{実験装置}
@@ -9,6 +9,7 @@
 \subsubsection{実験環境}
 実験環境として\figref{fig:haruyama_cit3f}に示す，千葉工業大学２号館３階を模した環境を使用する．
 経路の選択を行う場所として\figref{fig:haruyama_cit3f}の A, Bの分岐路を対象に行う．
+\figref{fig:select_pattern}に示すように，A，B の各分岐路で経路に侵入するパターンは 3 つ，また脱出するパターンがつ 2 つあることから合計 12 回の経路選択を行うことができる．
 
 \begin{figure}
   \centering
@@ -16,15 +17,22 @@
   \caption{Experimental environment(Quoted from \cite{haruyama2022})}
   \label{fig:haruyama_cit3f}
 \end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=130mm]{images/pdf/haruyama/select_pattern.pdf}
+  \caption{Experimental environment(Quoted from \cite{haruyama2022})}
+  \label{fig:select_pattern}
+\end{figure}
  
 \newpage
 \subsubsection{実験方法}
 \figref{fig:fujiwara_route}に示す経路を， a から f の順番で走行しながら，模倣学習を行う．
 データセットの収集には，藤原ら\cite{fujiwara2023}が提案している，学習データの不均衡を改善する手法，学習時の積極的な蛇行を行う手法を採用する．
-テスト時は，学習器の出力で壁に衝突することなく,分岐路の先の経由点に到達することができれば,成功とする.
+テスト時は，学習器の出力で壁に衝突することなく,分岐路の先の経由点に到達することができれば成功とする.
 オフライン学習に使用するデータセットは，a から f の順番で走行しながらオンライン学習を行った際に作成されるものを使用する．
-バッチサイズはオンライン学習と同様の 8 でデータセットからランダムにデータを抽出し，epoch数は 10 とする．
-実験では,学習とテストを繰り返し 10 回行う.
+オフライン学習のパラメータとして，バッチサイズはオンライン学習と同様の 8 でデータセットからランダムにデータを抽出し，epoch数は 10 とする．
+実験では，学習とテストを繰り返し 10 回行う.
 
 \begin{figure}
   \centering
@@ -38,6 +46,14 @@
 \ref{tab:result}に結果を示す．
 表では，春山らが使用していたネットワークを Previous method としている．
 そして新たなネットワークを使用した実験を Branched とした．
+新たに作成したネットワークでも，経路を正しく選択することが確認できた．
+step数が 10000 の場合，先行研究の手法と比較すると成功率が上昇した．
+しかしstep数が 20000 の場合は先行研究と成功率に大きな差は生まれなかった．
+オフライン学習を含めた手法では，成功率が１番高くなった．
+これはルートの後半部分での失敗が減少したことが理由として考えられる．
+% 具体的には\figre{fujiwara_route}の Route f の f6 から f7 にかけての経路選択の成功率が\ref{}に示すようになった．
+これらの結果から， 新たに作成したネットワークでは 従来 20000 step 必要としていた学習 step を 10000 step まで減らすことができた．
+また，オフライン学習を行うことで，オンライン学習での欠点である，
 
 \begin{table}[]
   \centering
