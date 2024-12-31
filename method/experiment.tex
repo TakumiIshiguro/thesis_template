@@ -14,18 +14,18 @@
 \begin{figure}
   \centering
   \includegraphics[width=130mm]{images/pdf/haruyama/cit3f.pdf}
-  \caption{Experimental environment(Quoted from \cite{haruyama2022})}
+  \caption[Experimental environment]{Experimental environment(Quoted from \cite{haruyama2022})}
   \label{fig:haruyama_cit3f}
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics[width=130mm]{images/pdf/haruyama/select_pattern.pdf}
-  \caption{Experimental environment(Quoted from \cite{haruyama2022})}
+  \caption[Selecting a path the T-junction]{Selecting a path the T-junction(Quoted from \cite{haruyama2022})}
   \label{fig:select_pattern}
 \end{figure}
  
-\newpage
+\clearpage
 \subsubsection{実験方法}
 \figref{fig:fujiwara_route}に示す経路を， a から f の順番で走行しながら，模倣学習を行う．
 データセットの収集には，藤原ら\cite{fujiwara2023}が提案している，学習データの不均衡を改善する手法，学習時の積極的な蛇行を行う手法を採用する．
@@ -37,13 +37,13 @@
 \begin{figure}
   \centering
   \includegraphics[width=130mm]{images/pdf/fujiwara/route.pdf}
-  \caption{Route for experiment(Quoted from \cite{fujiwara2023})}
+  \caption[Route for experiment]{Route for experiment(Quoted from \cite{fujiwara2023})}
   \label{fig:fujiwara_route}
 \end{figure}
 
 \clearpage
 \subsubsection{実験結果}
-\ref{tab:result}に結果を示す．
+\tabref{tab:result}に結果を示す．
 表では，春山らが使用していたネットワークを Previous method としている．
 そして新たなネットワークを使用した実験を Branched とした．
 
@@ -52,11 +52,11 @@ step数が 10000 の場合は，先行研究の手法と比較すると成功率
 しかしstep数が 20000 の場合は先行研究と成功率に大きな差は生じなかった．
 
 オフライン学習を併用した場合では，成功率が 20000 step と同等になった．
-また，オンライン学習の弱点であったルートの後半部分での失敗を減少させることができた．
-具体的には Branched 10000 step の実験で一番失敗の多い箇所であった，\figref{fig:fujiwara_route}の Route f の f6 から f7 にかけての経路選択の成功率が向上した．
-\ref{tab:f_result}に，f6 から f7 にかけての成功率を示す．
+一方で，オンライン学習の弱点であったルートの後半部分での失敗を減少させることができた．
+具体的には Branched で 10000 step の実験を行った際に一番失敗の多い箇所であった，\figref{fig:fujiwara_route}の Route f の f6 から f7 にかけての経路選択の成功率が向上した．
+\tabref{tab:f_result}に，それぞれの実験での f6 から f7 にかけての経路追従の成功率を示す．
 
-これらの結果から，従来 20000 step 必要としていた学習 step を 10000 step まで減らすことができた．
+これらの結果から，従来の手法では 20000 step 走行しながら学習していたものを， 10000 step まで減らすことができたと言える．
 また，ネットワークの変更やオフライン学習は経路選択の可能性を向上させるには有効であると考えられる．
 
 \begin{table}[]

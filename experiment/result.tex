@@ -1,7 +1,45 @@
 \newpage
 \section{実験結果}
 選定したシナリオ 28 例中，24 例の自律移動を確認した．
-以下は 1 例として Scenario35 を走行時の実験の様子を\figref{fig:exp_path}に示す．
+\tabref{tab:scenario_result}に全シナリオの走行の可否を示す．
+また， 1 例として Scenario35 を走行時の実験の様子を\figref{fig:exp_path}に示す．
+
+\begin{table}[]
+    \centering
+    \caption{Results of the scenario-based navigation}\label{tab:scenario_result}
+    \begin{tabular}{|c|c|}
+    \hline
+    scenario & success or failure \\ \hline
+    1        & ○                  \\ \hline
+    3        & ×                  \\ \hline
+    4        & ×                  \\ \hline
+    5        & ○                  \\ \hline
+    6        & ○                  \\ \hline
+    9        & ×                  \\ \hline
+    20       & ○                  \\ \hline
+    21       & ○                  \\ \hline
+    22       & ○                  \\ \hline
+    24       & ○                  \\ \hline
+    25       & ○                  \\ \hline
+    27       & ○                  \\ \hline
+    28       & ○                  \\ \hline
+    29       & ○                  \\ \hline
+    30       & ○                  \\ \hline
+    31       & ○                  \\ \hline
+    32       & ○                  \\ \hline
+    33       & ○                  \\ \hline
+    34       & ×                  \\ \hline
+    35       & ○                  \\ \hline
+    36       & ○                  \\ \hline
+    37       & ○                  \\ \hline
+    38       & ○                  \\ \hline
+    39       & ○                  \\ \hline
+    40       & ○                  \\ \hline
+    41       & ○                  \\ \hline
+    42       & ○                  \\ \hline
+    50       & ○                  \\ \hline
+    \end{tabular}
+\end{table}
 
 \begin{figure*}[htbp]
     \begin{tabular}{ccc}
@@ -63,6 +101,7 @@
 先行研究で走行が確認されていないエリアでも，経路追従することが確認できた．
 また，ロボットがシナリオの道順に沿って，分岐路で適切な経路を選択する様子が確認できた．
 
+\newpage
 失敗した 4 例ではそれぞれ，曲がり角で左折すべきところを直進した．
 \figref{fig:miss}に失敗した箇所を示す．
 失敗した 4 例の内訳として，\figref{fig:miss}の青枠に示す失敗が 3 例，緑枠に示す失敗が 1 例となった．

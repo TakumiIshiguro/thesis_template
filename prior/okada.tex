@@ -11,7 +11,7 @@
    \label{fig:okada_sys}
 \end{figure}
 
-訓練時には，ROS の navigation パッケージを使用して，設定した経路を追従する．
+訓練時には，ROS の navigation パッケージ \cite{ros}を使用して，設定した経路を追従する．
 ロボットの並進速度は 0.2 m/sに固定する．
 その際，ロボットに取り付けたカメラから取得した RGB 画像とルールベース制御器が出力するヨー方向の角速度をペアにして， 0.2 秒の周期でデータセットに追加する．
 収集には 3 台のカメラを使用することで，データの多様性を高めるとともに過学習を防ぐ効果を狙っている．
@@ -26,7 +26,7 @@
 \begin{figure}[htbp]
     \centering
      \includegraphics[width=100mm]{images/pdf/okada/network.pdf}
-     \caption{Structure of the network Okada and others used （Quoted from \cite{okada2020}）}
+     \caption[Structure of the network Okada and others used]{Structure of the network Okada and others used （Quoted from \cite{okada2020}）}
      \label{fig:okada_net}
 \end{figure}
 

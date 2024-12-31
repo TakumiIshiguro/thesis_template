@@ -3,7 +3,10 @@
 \thispagestyle{empty}
 %
 \begin{center}
-  \scalebox{1.5}{タイトル}\\
+  \scalebox{1.0}{視覚と行動のend-to-end学習により}\\
+  \vspace{-1.0zh}
+  \scalebox{1.0}{経路追従行動をオンラインで模倣する手法の提案}\\
+  \scalebox{1.0}{-シナリオに基づく目的地へのナビゲーションの改良と調査-}\\
 \end{center}
 \vspace{1.0zh}
 
@@ -20,7 +23,7 @@
 シミュレータを用いた実験によってこれらの手法が有効か調査した．
 さらに，実ロボットを用いた実験によって，これまで自律移動移動が確認されていないエリアを含むシナリオでも目的地まで移動できることを確認した．
 
-キーワード: 
+キーワード: 自律移動ロボット end-to-end 学習 ナビゲーション
 %
 \newpage
 %%
@@ -28,10 +31,23 @@
 \thispagestyle{empty}
 %
 \begin{center}
-  \scalebox{1.3}{title}
+  \scalebox{1.0}{A proposal for an imitation method of path-tracking behavior}\\
+  \vspace{-1zh}
+  \scalebox{1.0}{by end-to-end learning of vision and action}
+  \scalebox{1.0}{-Improving and exploring navigation based on scenarios-}
 \end{center}
 \vspace{1.0zh}
 %
+In our laboratory, several methods have been proposed to enhance the redundancy of navigation approaches for mobile robots.
+Okada et al. proposed a method that uses end-to-end learning to imitate path-following behavior generated from metric map-based navigation and applies it to vision-based behavior.
+Haruyama et al. extended Okada et al.'s approach by adding functionality to recognize intersection from camera images, determine target directions based on scenarios, and select routes. 
+Here, "scenarios" refer to 50 sentences proposed by Shimada et al., consisting of combinations of words related to "conditions" and "actions."
+Experiments with real robots demonstrated that the constructed system enables destination arrival through vision-based path-following. 
+However, Haruyama et al. showed that only 7 out of the 50 scenarios created by Shimada et al. were successfully autonomously navigated, as the experimental area was partially limited.
 
+Therefore, this paper investigates whether autonomous navigation to the destination can be achieved using only camera images, even in areas not targeted.
+First, network modifications and new training methods were implemented to improve the success rate of path-following. 
+The effectiveness of these approaches was evaluated through experiments in a simulator. 
+Furthermore, experiments with real robots confirmed that the system could navigate to destinations in scenarios that include unverified areas.
 
-keywords: 
+keywords: autonomouse moblie robot, end-to-end learning, navigation
