@@ -16,7 +16,7 @@
 春山らは，岡田らの手法に加えて，カメラ画像から通路の種類を分類，シナリオによって目標方向を決定し，経路を選択する機能を追加している．
 ここでのシナリオとは，島田らが提案した，「条件」と「行動」に関する単語を組みわせて構成された文章を指す．
 % 実ロボットを用いた実験から，構築したシステムにより視覚に基づいて経路を追従して目的地へ到達可能であることを確認した.
-春山らは，島田ら\cite{shimada2020}が作成したシナリオ 50 例から 7 例を選定し，そのすべてで視覚に基づいて経路を追従して目的地まで到達できることを確認している．
+春山らは，島田らが作成したシナリオ 50 例から 7 例を選定し，そのすべてで視覚に基づいて経路を追従して目的地まで到達できることを確認している．
 選定外のシナリオでは，地面の色が異なる場所や広場を含んでおり，視覚に基づいて経路追従するのがより困難な環境と考えられる．
 
 本論文では，春山らが対象としていないシナリオでも，目的地までカメラ画像のみを入力として経路追従できるか調査する．
@@ -41,7 +41,6 @@
   \scalebox{0.9}{route selection success rate}
 \end{center}
 \vspace{1.0zh}
-いったん後回し
 % In our laboratory, several methods have been proposed to enhance the redundancy of navigation approaches for mobile robots.
 % Okada et al. proposed a method that uses end-to-end learning to imitate path-following behavior generated from metric map-based navigation and applies it to vision-based behavior.
 % Haruyama et al. extended Okada et al.'s approach by adding functionality to recognize intersection from camera images, determine target directions based on scenarios, and select routes. 
@@ -53,5 +52,17 @@
 % First, network modifications and new training methods were implemented to improve the success rate of path-following. 
 % The effectiveness of these approaches was evaluated through experiments in a simulator. 
 % Furthermore, experiments with real robots confirmed that the system could navigate to destinations in scenarios that include unverified areas.
+
+Our laboratory has proposed various methods to enhance the redundancy of mobile robot navigation. 
+Okada et al. introduced a vision-based navigation approach by imitating metric map-based path-following behavior using end-to-end learning.
+Haruyama et al. extended this method by incorporating corridor classification from camera images and scenario-based path selection. 
+The "scenario," as defined by Shimada et al., consists of sentences combining "conditions" and "actions". 
+Experiments with a real robot confirmed successful visual-based path following in seven selected scenarios from Shimada et al.'s 50 examples.
+Excluded scenarios involved challenging environments such as varying ground colors and open spaces.
+
+In this paper, we investigate whether the robot can follow the path and reach the destination using only camera images, even in scenarios not addressed by Haruyama et al.
+First, to improve the success rate of path following, we introduced modifications to the network and new learning methods.
+Experiments conducted in a simulator verified whether these methods could enhance the success rate of path following.
+Experiments using a real robot confirmed that it could reach the destination even in scenarios not addressed by Haruyama et al.
 
 keywords: autonomouse moblie robot, end-to-end learning, navigation
