@@ -108,9 +108,9 @@
 失敗した箇所でも通路の特徴の分類は正しく行われており，経路追従モジュールに与える目標方向も正しい値が入力されていた．
 失敗の原因として，通路分類モジュールの出力に遅れがあることが考えられる．
 失敗箇所において，学習時とテスト時に「左折」の目標方向を与えたタイミングのロボットの位置を\figref{fig:mis_1}と\figref{fig:mis_2}に示す．
-学習時は角から 1 -- 2 m ほど前方で目標方向を与えているのに対し，テスト時では 角から 0.2 -- 0.5 m まで近づいてから与えられていることがわかった．
+学習時は角から $1 \sim 2$ m ほど前方で目標方向を与えているのに対し，テスト時では 角から $0.2 \sim 0.5$ m まで近づいてから与えられていることがわかった．
 経路追従モジュールに目標方向が与えられるタイミングは，通路分類モジュールの出力が変化したタイミングとなる．
-つまり通路の分類が遅れることで目標方向が与えるタイミングが遅くなり，曲がることができないと考えた．
+つまり通路の分類が遅れることで目標方向を与えるタイミングが遅くなり，曲がることができないと考えた．
 確認として，学習時と同じタイミングで経路追従モジュールに目標方向を与えた場合では曲がる様子が確認できた．
 これより，失敗した要因として通路分類モジュールの出力に遅れがあることが考えられる．
 
@@ -127,12 +127,12 @@
     \begin{tabular}{ccc}
         \begin{minipage}[t]{0.5\textwidth}
             \centering
-            \includegraphics[keepaspectratio, width=70mm]{images/png/ishiguro/learning_1.png}
+            \includegraphics[keepaspectratio, width=60mm]{images/png/ishiguro/learning_1.png}
             \subcaption{Location of label changes during learning}
         \end{minipage} &
         \begin{minipage}[t]{0.5\textwidth}
             \centering
-            \includegraphics[keepaspectratio, width=70mm]{images/png/ishiguro/test_1.png}
+            \includegraphics[keepaspectratio, width=60mm]{images/png/ishiguro/test_1.png}
             \subcaption{Location of label changes during testing}
         \end{minipage}
     \end{tabular}
@@ -144,12 +144,12 @@
     \begin{tabular}{ccc}
         \begin{minipage}[t]{0.5\textwidth}
             \centering
-            \includegraphics[keepaspectratio, width=70mm]{images/png/ishiguro/learning_2.png}
+            \includegraphics[keepaspectratio, width=60mm]{images/png/ishiguro/learning_2.png}
             \subcaption{Location of label changes during learning}
         \end{minipage} &
         \begin{minipage}[t]{0.5\textwidth}
             \centering
-            \includegraphics[keepaspectratio, width=70mm]{images/png/ishiguro/test_2.png}
+            \includegraphics[keepaspectratio, width=60mm]{images/png/ishiguro/test_2.png}
             \subcaption{Location of label changes during testing}
         \end{minipage}
     \end{tabular}

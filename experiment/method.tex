@@ -5,7 +5,7 @@
 環境中には，三叉路が 6 つ，角が 3 つ，突き当りが 4 つ含まれている．
 また，経路追従モジュールと通路分類モジュールの学習データを収集するために，\figref{fig:route}に示すルートを走行する．
 
-\begin{figure}[htbp]
+\begin{figure}[h]
   \centering
   \includegraphics[width=130mm]{images/pdf/ishiguro/topo.pdf}
   \caption{Experimental environment}
@@ -19,16 +19,16 @@
   \label{fig:route}
 \end{figure}
 
-\newpage
+\clearpage
 \subsection{シナリオの選定}
-実験に使用するシナリオを，島田らが作成した 50 例から選定した．
-選定するにあたって，以下の条件を設定した．
+実験に使用するシナリオを島田らが作成した 50 例から選定した．
+選定するにあたって以下の条件を設定した．
 
 \begin{enumerate}
   \item [1)] ロボットが移動するには通路が狭すぎて，衝突せずに走行するのが困難な，\figref{fig:keepout}上部に示す部分を走行ルートに含まれないこと．
   \item [2)] 現時点の経路追従モジュールでは対応していない，「後ろを向く」などその場での旋回が含まれていないこと．
   % \item [3)] ロボットが移動しても，カメラ画像の特徴の変化が小さいため，通路の種類の分類が困難な\figref{fig:keepout}下部に示す部分がスタート地点では無いこと．
-  \item [3)] スタート地点が\figref{fig:keepout}に示す箇所でないこと．この箇所がスタート地点のシナリオは，「左手に通路が見えるまで直進」か「右手に通路が見えるまで直進」である．現時点の路分類モジュールの入力である正面のカメラ画像からでは，ロボットが移動してもカメラ画像の特徴の変化が小さく，シナリオの条件を満たす通路分類結果が得られない可能性がある．
+  \item [3)] スタート地点が\figref{fig:keepout}下部に示す箇所でないこと．この箇所がスタート地点のシナリオは，「左手に通路が見えるまで直進」か「右手に通路が見えるまで直進」で始まる．現時点の通路分類モジュールの入力である正面のカメラ画像からでは，ロボットが移動してもカメラ画像の特徴の変化が小さく，シナリオの条件を満たす通路分類結果が得られない可能性がある．
 \end{enumerate}
 
 条件ごとの除外したシナリオ数を\tabref{tab:remove}に示す．
@@ -39,7 +39,7 @@
   \caption{Number of scenarios excluded}\label{tab:remove}
   \begin{tabular}{c|c}
   \hline
-  reason & number of secnario\\
+  Reason & Number of secnario\\
   \hline
   1  & 4\\
   2  & 7\\
@@ -48,7 +48,7 @@
   \end{tabular}
 \end{table}
 
-\begin{figure}
+\begin{figure}[h]
   \centering
   \includegraphics[width=130mm]{images/pdf/ishiguro/keepout.pdf}
   \caption{Excluded area for experiments}
