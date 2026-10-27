@@ -1,0 +1,49 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{thesis}[2026/10/27 thesis template]
+
+%------------目次深さ-----------
+\setcounter{tocdepth}{2}
+
+%------------名称変更------------
+\renewcommand{\figurename}{Fig.~}
+\renewcommand{\tablename}{Table~}
+\renewcommand{\bibname}{参考文献}
+
+\newcommand{\figref}[1]{\figurename\ref{#1}}
+\newcommand{\tabref}[1]{\tablename\ref{#1}}
+\newcommand{\eqnref}[1]{Eq.~(\ref{#1})}
+\newcommand{\chapref}[1]{第\ref{#1}章}
+\newcommand{\secref}[1]{\ref{#1}節}
+
+%------------表紙の項目------------
+\def\@thesis{}
+\def\@teacher{}
+\def\@organization{}
+\newcommand{\thesis}[1]{\gdef\@thesis{#1}}
+\newcommand{\teacher}[1]{\gdef\@teacher{#1}}
+\newcommand{\organization}[1]{\gdef\@organization{#1}}
+
+%------------表紙------------
+\renewcommand{\maketitle}{%
+  \thispagestyle{empty}
+  \begin{center}
+    \vspace*{2cm}
+    {\LARGE \@thesis}\\
+    \vspace{2cm}
+    {\LARGE\bfseries \@title}\\
+    \vspace{5cm}
+    {\Large \@date\hspace{0.5zw}提出}\\
+    \vspace{1cm}
+    {\Large 指導教員\hspace{0.5zw}\@teacher}\\
+    \vspace{1cm}
+    {\Large \@organization}\\
+    \vspace{0.5cm}
+    {\LARGE \@author}
+  \end{center}
+  \clearpage
+  \mbox{}
+  \thispagestyle{empty}
+  \clearpage
+}
+
+\endinput
