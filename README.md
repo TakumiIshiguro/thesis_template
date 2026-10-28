@@ -7,13 +7,13 @@
 
 | 項目 | バージョン |
 |---|---|
-| OS | Ubuntu 20.04.6 LTS |
+| OS | Ubuntu 20.04.6 LTS，Ubuntu 22.04.5 LTS |
 | TeX Live | 2026（`~/.local/texlive/2026`，scheme-full） |
 | latexmk | 4.88 |
 | e-upTeX | 3.141592653-p4.1.2-u2.02-251130-2.6 |
 | upBibTeX | 0.99e-j0.36-u2.02 |
 | dvipdfmx | 20260317 |
-| VSCode | 1.139.0 |
+| VSCode | 1.130.0，1.139.0 |
 | LaTeX Workshop | 10.20.0 |
 
 ## 環境構築
